@@ -1,17 +1,13 @@
 export const STATE_ROW_STATISTICS = [
-  // 'confirmed',
-  'SC',
-  // 'active',
-  'ST',
-  // 'recovered',
-  'Others',
-  // 'deaths',
-  'Total'
-]; //Todo
+  'confirmed',
+  'active',
+  'recovered',
+  'deaths',
+];
 export const DISTRICT_ROW_STATISTICS = [
-  'SC',
-  'ST',
-  'Others',
+  'confirmed',
+  'active',
+  'recovered',
   'deceased',
 ];
 

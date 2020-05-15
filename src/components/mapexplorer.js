@@ -105,7 +105,7 @@ function MapExplorer({
         );
       }
     } else {
-      const dataTypes = ['SC', 'ST', 'Others', 'deceased'];
+      const dataTypes = ['confirmed', 'active', 'recovered', 'deceased'];
       statistic = dataTypes.reduce((acc, dtype) => {
         acc[dtype] = {total: 0, max: 0};
         return acc;
@@ -115,7 +115,7 @@ function MapExplorer({
           acc[state.state] = {};
           dataTypes.forEach((dtype) => {
             let typeCount = parseInt(
-              state[dtype !== 'deceased' ? dtype : 'Total']
+              state[dtype !== 'deceased' ? dtype : 'deaths']
             );
             if (currentMap.stat === MAP_STATISTICS.PER_MILLION)
               typeCount = (1e6 * typeCount) / STATE_POPULATIONS[state.state];
@@ -176,10 +176,10 @@ function MapExplorer({
       const districtData = stateDistrictObj.districtData[
         regionHighlighted.district
       ] || {
-        SC: 0,
-        ST: 0,
-        Others: 0,
-        Total: 0,
+        confirmed: 0,
+        active: 0,
+        recovered: 0,
+        deaths: 0,
       };
       const district = getRegionFromDistrict(
         districtData,
@@ -246,7 +246,7 @@ function MapExplorer({
         const topDistrict = Object.keys(districtData)
           .filter((state) => state !== 'Unknown')
           .sort((a, b) => {
-            return districtData[b].SC - districtData[a].SC;
+            return districtData[b].confirmed - districtData[a].confirmed;
           })[0];
         ReactDOM.unstable_batchedUpdates(() => {
           setRegionHighlighted({
@@ -347,42 +347,42 @@ function MapExplorer({
       <div className="map-stats">
         <div
           className={`stats fadeInUp ${
-            mapOption === 'SC' ? 'focused' : ''
+            mapOption === 'confirmed' ? 'focused' : ''
           }`}
           style={{animationDelay: '2s'}}
-          onClick={() => setMapOption('SC')}
+          onClick={() => setMapOption('confirmed')}
         >
-          <h5>{window.innerWidth <= 769 ? t('Cnfmd') : t('SC')}</h5>
+          <h5>{window.innerWidth <= 769 ? t('Cnfmd') : t('Confirmed')}</h5>
           <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.SC)}</h1>
+            <h1>{formatNumber(panelRegion.confirmed)}</h1>
             <h6>{`+${formatNumber(panelRegion.deltaconfirmed)}`}</h6>
           </div>
         </div>
 
         <div
           className={`stats is-blue fadeInUp ${
-            mapOption === 'ST' ? 'focused' : ''
+            mapOption === 'active' ? 'focused' : ''
           }`}
           style={{animationDelay: '2.1s'}}
-          onClick={() => setMapOption('ST')}
+          onClick={() => setMapOption('active')}
         >
           <h5>{window.innerWidth <= 769 ? t('Actv') : t('Active')}</h5>
           <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.ST)}</h1>
+            <h1>{formatNumber(panelRegion.active)}</h1>
             <h6>{` `}</h6>
           </div>
         </div>
 
         <div
           className={`stats is-green fadeInUp ${
-            mapOption === 'Others' ? 'focused' : ''
+            mapOption === 'recovered' ? 'focused' : ''
           }`}
           style={{animationDelay: '2.2s'}}
-          onClick={() => setMapOption('Others')}
+          onClick={() => setMapOption('recovered')}
         >
           <h5>{window.innerWidth <= 769 ? t('Rcvrd') : t('Recovered')}</h5>
           <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.Others)}</h1>
+            <h1>{formatNumber(panelRegion.recovered)}</h1>
             <h6>{`+${formatNumber(panelRegion.deltarecovered)}`}</h6>
           </div>
         </div>
@@ -396,7 +396,7 @@ function MapExplorer({
         >
           <h5>{window.innerWidth <= 769 ? t('Dcsd') : t('Deceased')}</h5>
           <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.Total)}</h1>
+            <h1>{formatNumber(panelRegion.deaths)}</h1>
             <h6>{`+${formatNumber(panelRegion.deltadeaths)}`}</h6>
           </div>
         </div>
@@ -430,7 +430,7 @@ function MapExplorer({
         <h2
           className={`${
             currentMap.stat !== MAP_STATISTICS.ZONE
-              ? mapOption !== 'SC'
+              ? mapOption !== 'confirmed'
                 ? mapOption
                 : ''
               : hoveredRegionZone
@@ -472,7 +472,7 @@ function MapExplorer({
           (currentMapMeta.mapType === MAP_TYPES.COUNTRY &&
             currentMap.stat !== MAP_STATISTICS.TOTAL)) ? (
           <h1
-            className={`district ${mapOption !== 'SC' ? mapOption : ''}`}
+            className={`district ${mapOption !== 'confirmed' ? mapOption : ''}`}
           >
             {hoveredRegionCount}
             <br />

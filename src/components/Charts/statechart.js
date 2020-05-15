@@ -29,14 +29,14 @@ function StateChart(props) {
   }
 
   props.data.forEach((state, index) => {
-    if (index === 0 || state.SC <= 0) {
+    if (index === 0 || state.confirmed <= 0) {
       return;
     }
     if (index <= 15) {
       stateNames.push(state.state);
-      stateCases.push(state.SC);
+      stateCases.push(state.confirmed);
     } else {
-      otherStateCases += parseInt(state.SC);
+      otherStateCases += parseInt(state.confirmed);
     }
   });
 

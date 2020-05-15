@@ -18,7 +18,7 @@ function AllStatesChart(props) {
   const statesData = new Map();
 
   props.data.forEach((data) => {
-    if (data.status !== 'SC') {
+    if (data.status !== 'Confirmed') {
       return;
     }
 

@@ -5,26 +5,26 @@ import React from 'react';
 import {MemoryRouter} from 'react-router-dom';
 
 const state = {
-  ST: '1',
-  SC: '11',
-  Total: '0',
+  active: '1',
+  confirmed: '11',
+  deaths: '0',
   deltaconfirmed: '0',
   deltadeaths: '0',
   deltarecovered: '0',
   lastupdatedtime: '30/03/2020 11:27:27',
-  Others: '10',
+  recovered: '10',
   state: 'Andaman and Nicobar Islands',
   statecode: 'AN',
 };
 
 const districts = {
-  'South Andaman': {SC: 5, lastupdatedtime: '', delta: {SC: 0}},
+  'South Andaman': {confirmed: 5, lastupdatedtime: '', delta: {confirmed: 0}},
   'North and Middle Andaman': {
-    SC: 1,
+    confirmed: 1,
     lastupdatedtime: '',
-    delta: {SC: 0},
+    delta: {confirmed: 0},
   },
-  Unknown: {SC: 5, lastupdatedtime: '', delta: {SC: 0}},
+  Unknown: {confirmed: 5, lastupdatedtime: '', delta: {confirmed: 0}},
 };
 
 const zones = [
@@ -101,21 +101,21 @@ describe('Row component', () => {
     const cells = stateSelector.find('td');
 
     const stateName = cells.at(0).text();
-    const SC = cells.at(1).text();
-    const ST = cells.at(2).text();
-    const Others = cells.at(3).text();
-    const Total = cells.at(4).text();
+    const confirmed = cells.at(1).text();
+    const active = cells.at(2).text();
+    const recovered = cells.at(3).text();
+    const deaths = cells.at(4).text();
 
     expect(stateSelector).toHaveLength(1);
     expect(cells).toHaveLength(5);
     expect(stateName).toContain(state.state);
-    expect(SC).toEqual('11');
-    expect(ST).toEqual('1');
-    expect(Others).toEqual('10');
-    expect(Total).toEqual('0');
+    expect(confirmed).toEqual('11');
+    expect(active).toEqual('1');
+    expect(recovered).toEqual('10');
+    expect(deaths).toEqual('0');
   });
 
-  test('Districts and the SC cases', () => {
+  test('Districts and the confirmed cases', () => {
     const stateRow = wrapper.find('tr.state');
     expect(stateRow).toHaveLength(1);
 
@@ -133,7 +133,7 @@ describe('Row component', () => {
       const confirmedNumber = cells.at(1).text();
 
       expect(districts[district]).not.toBeUndefined();
-      expect(districts[district]['SC']).toEqual(
+      expect(districts[district]['confirmed']).toEqual(
         parseInt(confirmedNumber)
       );
     });

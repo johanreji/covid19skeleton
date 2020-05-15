@@ -419,7 +419,7 @@ function TimeSeries({timeseriesProp, chartType, mode, logMode, isTotal}) {
       <div className="TimeSeries fadeInUp" style={{animationDelay: '2.7s'}}>
         <div className="svg-parent" ref={wrapperRef}>
           <div className="stats">
-            <h5 className={`${!moving ? 'title' : ''}`}>{t('SC')}</h5>
+            <h5 className={`${!moving ? 'title' : ''}`}>{t('Confirmed')}</h5>
             <h5 className={`${moving ? 'title' : ''}`}>{`${dateStr}`}</h5>
             <div className="stats-bottom">
               <h2>{formatNumber(datapoint[chartKey1])}</h2>

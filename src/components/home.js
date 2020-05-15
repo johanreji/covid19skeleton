@@ -42,7 +42,7 @@ function Home(props) {
   });
   const [showUpdates, setShowUpdates] = useState(false);
   const [anchor, setAnchor] = useState(null);
-  const [mapOption, setMapOption] = useState('SC');
+  const [mapOption, setMapOption] = useState('confirmed');
   const [isTimeseriesIntersecting, setIsTimeseriesIntersecting] = useState(
     false
   );
@@ -113,8 +113,7 @@ function Home(props) {
         {data: stateDistrictWiseResponse},
         {data: stateTestData},
       ] = await Promise.all([
-        // axios.get('https://api.covid19india.org/data.json'), //todo
-        axios.get('http://www.mocky.io/v2/5eb5933e310000570069971d'),
+        axios.get('https://api.covid19india.org/data.json'),
         axios.get('https://api.covid19india.org/state_district_wise.json'),
         axios.get('https://api.covid19india.org/state_test_data.json'),
       ]);

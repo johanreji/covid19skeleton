@@ -101,11 +101,11 @@ function ChoroplethMap({
       } else {
         const colorInterpolator = (t) => {
           switch (mapOption) {
-            case 'SC':
+            case 'confirmed':
               return d3.interpolateReds(t * 0.85);
-            case 'ST':
+            case 'active':
               return d3.interpolateBlues(t * 0.85);
-            case 'Others':
+            case 'recovered':
               return d3.interpolateGreens(t * 0.85);
             case 'deceased':
               return d3.interpolateGreys(t * 0.85);
@@ -259,11 +259,11 @@ function ChoroplethMap({
           } else {
             return isHovered
               ? `${
-                  mapOption === 'SC'
+                  mapOption === 'confirmed'
                     ? '#ff073a'
-                    : mapOption === 'ST'
+                    : mapOption === 'active'
                     ? '#007bff'
-                    : mapOption === 'Others'
+                    : mapOption === 'recovered'
                     ? '#28a745'
                     : mapOption === 'deceased'
                     ? '#6c757d'
@@ -330,11 +330,11 @@ function ChoroplethMap({
             return '#00000060';
           } else {
             return `${
-              mapOption === 'SC'
+              mapOption === 'confirmed'
                 ? '#ff073a30'
-                : mapOption === 'ST'
+                : mapOption === 'active'
                 ? '#007bff30'
-                : mapOption === 'Others'
+                : mapOption === 'recovered'
                 ? '#28a74530'
                 : mapOption === 'deceased'
                 ? '#6c757d30'
@@ -428,11 +428,11 @@ function ChoroplethMap({
           nodes[i].parentNode.appendChild(nodes[i]);
           d3.select(nodes[i]).attr('stroke', function (d) {
             if (currentMap.stat === MAP_STATISTICS.ZONE) return '#343a40';
-            return d3.select(this).classed('SC')
+            return d3.select(this).classed('confirmed')
               ? '#ff073a'
-              : d3.select(this).classed('ST')
+              : d3.select(this).classed('active')
               ? '#007bff'
-              : d3.select(this).classed('Others')
+              : d3.select(this).classed('recovered')
               ? '#28a745'
               : d3.select(this).classed('deceased')
               ? '#6c757d'

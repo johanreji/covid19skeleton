@@ -10,10 +10,10 @@ function Level(props) {
 
   useEffectOnce(() => {
     setData({
-      ST: +props.data.ST,
-      SC: +props.data.SC,
-      Others: +props.data.Others,
-      Total: +props.data.Total,
+      active: +props.data.active,
+      confirmed: +props.data.confirmed,
+      recovered: +props.data.recovered,
+      deaths: +props.data.deaths,
       deltaconfirmed: +props.data.deltaconfirmed,
       deltadeaths: +props.data.deltadeaths,
       deltarecovered: +props.data.deltarecovered,
@@ -26,7 +26,7 @@ function Level(props) {
         className="level-item is-cherry fadeInUp"
         style={{animationDelay: '1s'}}
       >
-        <h5>{t('SC')}</h5>
+        <h5>{t('Confirmed')}</h5>
         <h4>
           [
           {isNaN(data.deltaconfirmed)
@@ -36,7 +36,7 @@ function Level(props) {
             : '+0'}
           ]
         </h4>
-        <h1>{formatNumber(data.SC)} </h1>
+        <h1>{formatNumber(data.confirmed)} </h1>
       </div>
 
       <div
@@ -45,7 +45,7 @@ function Level(props) {
       >
         <h5 className="heading">{t('Active')}</h5>
         <h4>&nbsp;</h4>
-        <h1 className="title has-text-info">{formatNumber(data.ST)}</h1>
+        <h1 className="title has-text-info">{formatNumber(data.active)}</h1>
       </div>
 
       <div
@@ -63,7 +63,7 @@ function Level(props) {
           ]
         </h4>
         <h1 className="title has-text-success">
-          {formatNumber(data.Others)}{' '}
+          {formatNumber(data.recovered)}{' '}
         </h1>
       </div>
 
@@ -81,7 +81,7 @@ function Level(props) {
             : '+0'}
           ]
         </h4>
-        <h1 className="title has-text-grey">{formatNumber(data.Total)}</h1>
+        <h1 className="title has-text-grey">{formatNumber(data.deaths)}</h1>
       </div>
     </div>
   );

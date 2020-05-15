@@ -28,7 +28,6 @@ function StateCell({state, statistic}) {
         {state[`delta${statistic}`] > 0 && state[`delta${statistic}`]}
       </span>
       <span className="total">
-        {/* TODO = change */}
         {state[statistic] === 0 ? '-' : formatNumber(state[statistic])}
       </span>
     </td>
@@ -50,9 +49,9 @@ function DistrictHeaderCell({handleSort, statistic, sortData}) {
             ? statistic.slice(0)
             : breakpoint === 'S'
             ? capitalize(
-                abbreviate(statistic === 'Total' ? 'deceased' : statistic)
+                abbreviate(statistic === 'deaths' ? 'deceased' : statistic)
               )
-            : t(capitalize(statistic === 'Total' ? 'deceased' : statistic))}
+            : t(capitalize(statistic === 'deaths' ? 'deceased' : statistic))}
         </abbr>
         <div
           style={{
@@ -178,7 +177,7 @@ function Row({
   const [sortedDistricts, setSortedDistricts] = useState(districts);
   const [showDistricts, setShowDistricts] = useState(false);
   const [sortData, setSortData] = useLocalStorage('districtSortData', {
-    sortColumn: 'SC',
+    sortColumn: 'confirmed',
     isAscending: false,
   });
 
@@ -285,11 +284,10 @@ function Row({
             </span>
           </div>
         </td>
-{/* //todo */}
-        {STATE_ROW_STATISTICS.map((statistic, index) => {
-          console.log(state)
-          return <StateCell key={index} state={state} statistic={statistic} />
-})}
+
+        {STATE_ROW_STATISTICS.map((statistic, index) => (
+          <StateCell key={index} state={state} statistic={statistic} />
+        ))}
       </tr>
 
       {showDistricts && (

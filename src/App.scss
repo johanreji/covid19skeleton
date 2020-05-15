@@ -602,7 +602,7 @@ h6 {
       padding-right: 1rem;
     }
 
-    &.SC {
+    &.confirmed {
       background: $cherry-light;
 
       h3,
@@ -617,7 +617,7 @@ h6 {
       }
     }
 
-    &.ST {
+    &.active {
       background: $blue-light;
 
       h3,
@@ -1646,11 +1646,11 @@ h6 {
     width: calc(25%) !important;
     z-index: -1;
 
-    &.ST {
+    &.active {
       background: $blue-light;
     }
 
-    &.Others {
+    &.recovered {
       background: $green-light;
     }
 
@@ -1835,19 +1835,19 @@ table {
       color: $gray;
       text-align: right;
 
-      &.is-SC {
+      &.is-confirmed {
         color: $cherry;
       }
 
-      &.is-ST {
+      &.is-active {
         color: $blue;
       }
 
-      &.is-Others {
+      &.is-recovered {
         color: $green;
       }
 
-      &.is-Total {
+      &.is-deaths {
         color: $gray;
       }
     }
@@ -1926,19 +1926,19 @@ table {
           width: 9px;
         }
 
-        &.is-SC {
+        &.is-confirmed {
           color: $cherry;
         }
 
-        &.is-ST {
+        &.is-active {
           color: $blue;
         }
 
-        &.is-Others {
+        &.is-recovered {
           color: $green;
         }
 
-        &.is-Total {
+        &.is-deaths {
           color: $gray;
         }
       }
@@ -2304,11 +2304,11 @@ table {
       width: calc(100% - 10rem);
       word-wrap: break-word;
 
-      &.ST {
+      &.active {
         color: $blue;
       }
 
-      &.Others {
+      &.recovered {
         color: $green;
       }
 
@@ -2349,11 +2349,11 @@ table {
         font-weight: 600;
       }
 
-      &.ST {
+      &.active {
         color: $blue;
       }
 
-      &.Others {
+      &.recovered {
         color: $green;
       }
 
@@ -3401,7 +3401,7 @@ footer {
       }
     }
 
-    .react-calendar__tile--ST {
+    .react-calendar__tile--active {
       background: $pblue-light;
       color: $pblue !important;
 
@@ -4432,15 +4432,15 @@ footer {
     font-weight: 900;
     margin-bottom: .5rem;
 
-    &.SC {
+    &.confirmed {
       color: $red;
     }
 
-    &.ST {
+    &.active {
       color: $blue;
     }
 
-    &.Others {
+    &.recovered {
       color: $green;
     }
 
@@ -4551,15 +4551,15 @@ footer {
         h6 {
           margin: 0;
 
-          &.SC {
+          &.confirmed {
             color: $red-mid;
           }
 
-          &.ST {
+          &.active {
             color: $blue-mid;
           }
 
-          &.Others {
+          &.recovered {
             color: $green-mid;
           }
 
@@ -4573,15 +4573,15 @@ footer {
           vertical-align: bottom;
           width: 10px;
 
-          &.SC {
+          &.confirmed {
             color: $red-mid;
           }
 
-          &.ST {
+          &.active {
             color: $blue-mid;
           }
 
-          &.Others {
+          &.recovered {
             color: $green-mid;
           }
 

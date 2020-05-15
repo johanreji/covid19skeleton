@@ -28,10 +28,9 @@ function StateHeaderCell({handleSort, sortData, statistic}) {
             ? statistic.slice(0)
             : breakpoint === 'S'
             ? capitalize(
-              //todo
-                abbreviate(statistic === 'Total' ? 'Total' : statistic)
+                abbreviate(statistic === 'deaths' ? 'deceased' : statistic)
               )
-            : t(capitalize(statistic === 'Total' ? 'Total' : statistic))}
+            : t(capitalize(statistic === 'deaths' ? 'deceased' : statistic))}
         </abbr>
         <div
           style={{
@@ -63,7 +62,7 @@ function Table({
   onHighlightDistrict,
 }) {
   const [sortData, setSortData] = useLocalStorage('sortData', {
-    sortColumn: 'SC',
+    sortColumn: 'confirmed',
     isAscending: false,
   });
   const {t} = useTranslation();
@@ -104,7 +103,7 @@ function Table({
   const FineprintBottom = useMemo(
     () => (
       <h5 className="table-fineprint fadeInUp" style={{animationDelay: '1s'}}>
-        {states.slice(1).filter((s) => s && s.SC > 0).length} States/UTS
+        {states.slice(1).filter((s) => s && s.confirmed > 0).length} States/UTS
         Affected
       </h5>
     ),
@@ -195,8 +194,7 @@ function Table({
           {states && (
             <tbody>
               {sortedStates.map((state, index) => {
-              //todo
-                if (state.SC > 0 && state.statecode !== 'TT') {
+                if (state.confirmed > 0 && state.statecode !== 'TT') {
                   return (
                     <Row
                       key={state.statecode}

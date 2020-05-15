@@ -12,8 +12,8 @@ import {Bar, defaults} from 'react-chartjs-2';
 
 function DailyConfirmedChart(props) {
   const dates = [];
-  const SC = [];
-  const Others = [];
+  const confirmed = [];
+  const recovered = [];
   const deceased = [];
 
   if (!props.timeseries || props.timeseries.length === 0) {
@@ -24,8 +24,8 @@ function DailyConfirmedChart(props) {
     if (index >= 31) {
       const date = parse(data.date, 'dd MMMM', new Date(2020, 0, 1));
       dates.push(format(date, 'dd MMM'));
-      SC.push(data.dailyconfirmed);
-      Others.push(data.dailyrecovered);
+      confirmed.push(data.dailyconfirmed);
+      recovered.push(data.dailyrecovered);
       deceased.push(data.dailydeceased);
     }
   });
@@ -34,7 +34,7 @@ function DailyConfirmedChart(props) {
     labels: dates,
     datasets: [
       {
-        data: Others,
+        data: recovered,
         label: 'Recovered',
         backgroundColor: '#7ebf80',
       },
@@ -44,8 +44,8 @@ function DailyConfirmedChart(props) {
         backgroundColor: '#6c757d',
       },
       {
-        data: SC,
-        label: 'SC',
+        data: confirmed,
+        label: 'Confirmed',
         backgroundColor: '#ff6862',
       },
     ],

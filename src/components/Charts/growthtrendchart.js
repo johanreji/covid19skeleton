@@ -36,7 +36,7 @@ function GrowthTrendChart(props) {
   const statesDailyData = new Map();
 
   props.data.forEach((data, index) => {
-    if (data.status !== 'SC') {
+    if (data.status !== 'Confirmed') {
       return;
     }
 

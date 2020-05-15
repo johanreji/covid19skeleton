@@ -70,7 +70,7 @@ function State(props) {
   const [testData, setTestData] = useState({});
   const [sources, setSources] = useState({});
   const [districtData, setDistrictData] = useState({});
-  const [mapOption, setMapOption] = useState('SC');
+  const [mapOption, setMapOption] = useState('confirmed');
   const [mapSwitcher, {width}] = useMeasure();
   const [showAllDistricts, setShowAllDistricts] = useState(false);
   const [regionHighlighted, setRegionHighlighted] = useState({
@@ -133,11 +133,11 @@ function State(props) {
         duration: 200,
         delay: 3000,
         translateX:
-          mapOption === 'SC'
+          mapOption === 'confirmed'
             ? `${width * 0}px`
-            : mapOption === 'ST'
+            : mapOption === 'active'
             ? `${width * 0.25}px`
-            : mapOption === 'Others'
+            : mapOption === 'recovered'
             ? `${width * 0.5}px`
             : mapOption === 'deceased'
             ? `${width * 0.75}px`
@@ -245,7 +245,7 @@ function State(props) {
                 <div
                   className="clickable"
                   onClick={() => {
-                    setMapOption('SC');
+                    setMapOption('confirmed');
                     anime({
                       targets: '.highlight',
                       translateX: `${width * 0}px`,
@@ -256,7 +256,7 @@ function State(props) {
                 <div
                   className="clickable"
                   onClick={() => {
-                    setMapOption('ST');
+                    setMapOption('active');
                     anime({
                       targets: '.highlight',
                       translateX: `${width * 0.25}px`,
@@ -267,7 +267,7 @@ function State(props) {
                 <div
                   className="clickable"
                   onClick={() => {
-                    setMapOption('Others');
+                    setMapOption('recovered');
                     anime({
                       targets: '.highlight',
                       translateX: `${width * 0.5}px`,
@@ -312,7 +312,7 @@ function State(props) {
                   <div className="alert-right">
                     Awaiting district details for{' '}
                     {districtData[stateName]?.districtData['Unknown']
-                      ?.SC || '0'}{' '}
+                      ?.confirmed || '0'}{' '}
                     cases
                   </div>
                 </div>
@@ -394,7 +394,7 @@ function State(props) {
                                 <div key={index} className="district">
                                   <h2>{cases[mapOption]}</h2>
                                   <h5>{district}</h5>
-                                  {mapOption !== 'ST' && (
+                                  {mapOption !== 'active' && (
                                     <div className="delta">
                                       <Icon.ArrowUp className={mapOption} />
                                       <h6 className={mapOption}>
@@ -419,7 +419,7 @@ function State(props) {
                       )}
                   </div>
                   <div className="district-bar-right">
-                    {(mapOption === 'SC' ||
+                    {(mapOption === 'confirmed' ||
                       mapOption === 'deceased') && (
                       <div
                         className="happy-sign fadeInUp"
@@ -430,7 +430,7 @@ function State(props) {
                           .every((day) => day[`daily${mapOption}`] === 0) && (
                           <div
                             className={`alert ${
-                              mapOption === 'SC' ? 'is-green' : ''
+                              mapOption === 'confirmed' ? 'is-green' : ''
                             }`}
                           >
                             <Icon.Smile />

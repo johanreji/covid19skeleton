@@ -14,23 +14,23 @@ function StateMeta({
   lastSevenDaysData,
   totalData,
 }) {
-  const SC = stateData.SC;
-  const ST = stateData.ST;
-  const Total = stateData.Total;
-  const Others = SC - ST - Total;
+  const confirmed = stateData.confirmed;
+  const active = stateData.active;
+  const deaths = stateData.deaths;
+  const recovered = confirmed - active - deaths;
   const sevenDayBeforeData = lastSevenDaysData[0].totalconfirmed;
   const sevenDayBeforeDate = format(lastSevenDaysData[0].date, 'dd MMM');
   const previousDayData = lastSevenDaysData[6].totalconfirmed;
   const previousDayDate = format(lastSevenDaysData[6].date, 'dd MMM');
-  const confirmedPerMillion = (SC / population) * 1000000;
-  const recoveryPercent = (Others / SC) * 100;
-  const activePercent = (ST / SC) * 100;
-  const deathPercent = (Total / SC) * 100;
+  const confirmedPerMillion = (confirmed / population) * 1000000;
+  const recoveryPercent = (recovered / confirmed) * 100;
+  const activePercent = (active / confirmed) * 100;
+  const deathPercent = (deaths / confirmed) * 100;
   const testPerMillion = (lastTestObject?.totaltested / population) * 1000000;
   const growthRate =
     ((previousDayData - sevenDayBeforeData) / sevenDayBeforeData) * 100;
   const totalConfirmedPerMillion =
-    (totalData[0].SC / 1332900000) * 1000000;
+    (totalData[0].confirmed / 1332900000) * 1000000;
   // const doublingRate =
   // growthRate > 0 ? (70 / Math.round(growthRate)).toFixed(2) : 0;
 
@@ -75,11 +75,11 @@ function StateMeta({
 
       <div className="StateMeta">
         <StateMetaCard
-          className="SC"
-          title={'SC Per Million'}
+          className="confirmed"
+          title={'Confirmed Per Million'}
           statistic={confirmedPerMillion.toFixed(2)}
           total={totalConfirmedPerMillion.toFixed(2)}
-          formula={'(SC / state population) * 1 Million'}
+          formula={'(confirmed / state population) * 1 Million'}
           description={`
             ${Math.round(
               confirmedPerMillion
@@ -90,11 +90,11 @@ function StateMeta({
         />
 
         <StateMetaCard
-          className="ST"
+          className="active"
           title={'Active'}
           statistic={`${activePercent.toFixed(2)}%`}
-          formula={'(ST / SC) * 100'}
-          description={`For every 100 SC cases, ${activePercent.toFixed(
+          formula={'(active / confirmed) * 100'}
+          description={`For every 100 confirmed cases, ${activePercent.toFixed(
             0
           )} are currently infected.`}
         />
@@ -103,19 +103,19 @@ function StateMeta({
           className="recovery"
           title={'Recovery Rate'}
           statistic={`${recoveryPercent.toFixed(2)}%`}
-          formula={'(Others / SC) * 100'}
-          description={`For every 100 SC cases, 
+          formula={'(recovered / confirmed) * 100'}
+          description={`For every 100 confirmed cases, 
             ${Math.round(
               recoveryPercent.toFixed(0)
-            )} have Others from the virus.`}
+            )} have recovered from the virus.`}
         />
 
         <StateMetaCard
           className="mortality"
           title={'Mortality Rate'}
           statistic={`${deathPercent.toFixed(2)}%`}
-          formula={'(deceased / SC) * 100'}
-          description={`For every 100 SC cases, 
+          formula={'(deceased / confirmed) * 100'}
+          description={`For every 100 confirmed cases, 
             ${Math.round(
               deathPercent.toFixed(0)
             )} have unfortunately passed away from the virus.`}

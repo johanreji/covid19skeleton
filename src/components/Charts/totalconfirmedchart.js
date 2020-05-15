@@ -7,8 +7,8 @@ import {Line} from 'react-chartjs-2';
 
 function TotalConfirmedChart(props) {
   const dates = [];
-  const SC = [];
-  const Others = [];
+  const confirmed = [];
+  const recovered = [];
   const deceased = [];
 
   if (!props.timeseries || props.timeseries.length === 0) {
@@ -19,8 +19,8 @@ function TotalConfirmedChart(props) {
     if (index >= 31) {
       const date = parse(data.date, 'dd MMMM', new Date(2020, 0, 1));
       dates.push(date);
-      SC.push(data.totalconfirmed);
-      Others.push(data.totalrecovered);
+      confirmed.push(data.totalconfirmed);
+      recovered.push(data.totalrecovered);
       deceased.push(data.totaldeceased);
     }
   });
@@ -30,16 +30,16 @@ function TotalConfirmedChart(props) {
     datasets: [
       {
         borderWidth: 2,
-        data: SC,
+        data: confirmed,
         borderCapStyle: 'round',
         pointBackgroundColor: '#ff6862',
-        label: 'SC',
+        label: 'Confirmed',
         borderColor: '#ff6862',
         pointHoverRadius: 2,
       },
       {
         borderWidth: 2,
-        data: Others,
+        data: recovered,
         borderCapStyle: 'round',
         pointBackgroundColor: '#7ebf80',
         label: 'Recovered',
