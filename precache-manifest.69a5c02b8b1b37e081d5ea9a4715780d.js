@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8479aefefd4f954a2beb623544c25c2e",
+    "revision": "eebb4678d4c9562ba8b2652e66051a3e",
     "url": "/covid19skeleton/index.html"
   },
   {
@@ -8,16 +8,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/covid19skeleton/static/css/6.93b3b32d.chunk.css"
   },
   {
-    "revision": "d56c09bb9c2463584030",
-    "url": "/covid19skeleton/static/css/main.c747b0f3.chunk.css"
+    "revision": "cd64f58e573c56c1ccd5",
+    "url": "/covid19skeleton/static/css/main.bcdcec16.chunk.css"
   },
   {
     "revision": "0347b209287a5644b5d7",
     "url": "/covid19skeleton/static/js/10.e14b2898.chunk.js"
   },
   {
-    "revision": "80f3d51afb72b2ad0b2e",
-    "url": "/covid19skeleton/static/js/11.7d852767.chunk.js"
+    "revision": "9f007dceeb1573c73f23",
+    "url": "/covid19skeleton/static/js/11.3661e01c.chunk.js"
   },
   {
     "revision": "85d2e6b364f25fcdbc2b",
@@ -56,8 +56,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/covid19skeleton/static/js/6.0185b69d.chunk.js"
   },
   {
-    "revision": "e7a6050c46722843b3f2",
-    "url": "/covid19skeleton/static/js/7.8dd53b6c.chunk.js"
+    "revision": "dea8bfc404f2ccb2f019",
+    "url": "/covid19skeleton/static/js/7.4b5b8de5.chunk.js"
   },
   {
     "revision": "a1f7f71036d28c7b1da3",
@@ -68,12 +68,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/covid19skeleton/static/js/9.4ffdcec7.chunk.js"
   },
   {
-    "revision": "d56c09bb9c2463584030",
-    "url": "/covid19skeleton/static/js/main.7a868669.chunk.js"
+    "revision": "cd64f58e573c56c1ccd5",
+    "url": "/covid19skeleton/static/js/main.b94b7632.chunk.js"
   },
   {
-    "revision": "156ec9443260dabb86c0",
-    "url": "/covid19skeleton/static/js/runtime-main.43e55cf5.js"
+    "revision": "51c3f7a5ac2bbbd94f4d",
+    "url": "/covid19skeleton/static/js/runtime-main.bd1dbf9d.js"
   },
   {
     "revision": "5e98861f6ef1ce225121abfb3f418166",
