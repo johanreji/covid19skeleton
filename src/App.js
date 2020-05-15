@@ -35,42 +35,42 @@ function App() {
 
   const pages = [
     {
-      pageLink: '/',
+      pageLink: '/covid19skeleton/',
       view: Home,
       displayName: 'Home',
       animationDelayForNavbar: 0.2,
       showInNavbar: true,
     },
     {
-      pageLink: '/demographics',
+      pageLink: '/covid19skeleton/demographics',
       view: PatientDB,
       displayName: t('Demographics'),
       animationDelayForNavbar: 0.3,
       showInNavbar: true,
     },
     {
-      pageLink: '/deepdive',
+      pageLink: '/covid19skeleton/deepdive',
       view: DeepDive,
       displayName: t('Deep Dive'),
       animationDelayForNavbar: 0.4,
       showInNavbar: true,
     },
     {
-      pageLink: '/essentials',
+      pageLink: '/covid19skeleton/essentials',
       view: Resources,
       displayName: t('Essentials'),
       animationDelayForNavbar: 0.5,
       showInNavbar: true,
     },
     {
-      pageLink: '/about',
+      pageLink: '/covid19skeleton/about',
       view: FAQ,
       displayName: t('About'),
       animationDelayForNavbar: 0.6,
       showInNavbar: true,
     },
     {
-      pageLink: '/state/:stateCode',
+      pageLink: '/covid19skeleton/state/:stateCode',
       view: State,
       displayName: t('State'),
       animationDelayForNavbar: 0.7,
@@ -137,7 +137,7 @@ function App() {
                       />
                     );
                   })}
-                  <Redirect to="/" />
+                  <Redirect to="/covid19skeleton/" />
                 </Switch>
               </div>
             )}
