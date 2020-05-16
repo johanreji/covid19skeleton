@@ -194,7 +194,7 @@ function Table({
           {states && (
             <tbody>
               {sortedStates.map((state, index) => {
-                if (state.confirmed > 0 && state.statecode !== 'TT') {
+                // if (state.confirmed > 0 && state.statecode !== 'TT') {
                   return (
                     <Row
                       key={state.statecode}
@@ -210,7 +210,7 @@ function Table({
                       onHighlightDistrict={onHighlightDistrict}
                     />
                   );
-                }
+                // }
                 return null;
               })}
             </tbody>

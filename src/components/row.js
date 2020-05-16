@@ -177,7 +177,7 @@ function Row({
   const [sortedDistricts, setSortedDistricts] = useState(districts);
   const [showDistricts, setShowDistricts] = useState(false);
   const [sortData, setSortData] = useLocalStorage('districtSortData', {
-    sortColumn: 'confirmed',
+    sortColumn: 'SC',
     isAscending: false,
   });
 
@@ -208,30 +208,30 @@ function Row({
     [onHighlightState, regionHighlighted]
   );
 
-  const doSort = useCallback(
-    (sortData) => {
-      const sorted = {};
-      Object.keys(sortedDistricts)
-        .sort((district1, district2) => {
-          if (sortData.sortColumn !== 'district') {
-            return sortData.isAscending
-              ? parseInt(sortedDistricts[district1][sortData.sortColumn]) -
-                  parseInt(sortedDistricts[district2][sortData.sortColumn])
-              : parseInt(sortedDistricts[district2][sortData.sortColumn]) -
-                  parseInt(sortedDistricts[district1][sortData.sortColumn]);
-          } else {
-            return sortData.isAscending
-              ? district1.localeCompare(district2)
-              : district2.localeCompare(district1);
-          }
-        })
-        .forEach((key) => {
-          sorted[key] = sortedDistricts[key];
-        });
-      setSortedDistricts(sorted);
-    },
-    [sortedDistricts]
-  );
+  // const doSort = useCallback(
+  //   (sortData) => {
+  //     const sorted = {};
+  //     Object.keys(sortedDistricts)
+  //       .sort((district1, district2) => {
+  //         if (sortData.sortColumn !== 'district') {
+  //           return sortData.isAscending
+  //             ? parseInt(sortedDistricts[district1][sortData.sortColumn]) -
+  //                 parseInt(sortedDistricts[district2][sortData.sortColumn])
+  //             : parseInt(sortedDistricts[district2][sortData.sortColumn]) -
+  //                 parseInt(sortedDistricts[district1][sortData.sortColumn]);
+  //         } else {
+  //           return sortData.isAscending
+  //             ? district1.localeCompare(district2)
+  //             : district2.localeCompare(district1);
+  //         }
+  //       })
+  //       .forEach((key) => {
+  //         sorted[key] = sortedDistricts[key];
+  //       });
+  //     setSortedDistricts(sorted);
+  //   },
+  //   [sortedDistricts]
+  // );
 
   const handleSort = useCallback(
     (statistic) => {
@@ -239,14 +239,14 @@ function Row({
         isAscending: !sortData.isAscending,
         sortColumn: statistic,
       };
-      doSort(newSortData);
+      // doSort(newSortData);
       setSortData(Object.assign({}, sortData, newSortData));
     },
-    [doSort, setSortData, sortData]
+    // [doSort, setSortData, sortData]
   );
 
   useEffectOnce(() => {
-    if (state.statecode !== 'TT') doSort(sortData);
+    // if (state.statecode !== 'TT') doSort(sortData);
   });
 
   return (

@@ -31,6 +31,7 @@ import {useEffectOnce, useLocalStorage} from 'react-use';
 
 function Home(props) {
   const [states, setStates] = useState(null);
+  const [vstates, setVStates] = useState(null);
   const [stateDistrictWiseData, setStateDistrictWiseData] = useState(null);
   const [districtZones, setDistrictZones] = useState(null);
   const [stateTestData, setStateTestData] = useState(null);
@@ -110,14 +111,16 @@ function Home(props) {
 
       const [
         {data},
+        {data: vstates},
         {data: stateDistrictWiseResponse},
         {data: stateTestData},
       ] = await Promise.all([
         axios.get('https://api.covid19india.org/data.json'),
+        axios.get('https://script.google.com/macros/s/AKfycbxSoELl1el6cJHtsdNcldXYgh4Tn69ofoVyNSfKGj9n2ar5YV4/exec'),
         axios.get('https://api.covid19india.org/state_district_wise.json'),
         axios.get('https://api.covid19india.org/state_test_data.json'),
       ]);
-
+      setVStates(vstates);
       setStates(data.statewise);
       setDistrictZones(parseDistrictZones(zonesResponse.zones));
 
@@ -201,7 +204,8 @@ function Home(props) {
           {timeseries && <Minigraph timeseries={timeseries['TT']} />}
           {stateDistrictWiseData && (
             <Table
-              states={states}
+              // states={states}
+              states={vstates}
               summary={false}
               districts={stateDistrictWiseData}
               zones={districtZones}
