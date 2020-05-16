@@ -28,7 +28,7 @@ export const MAP_VIEWS = {
   DISTRICTS: 1,
 };
 
-export const MAPS_DIR = '/maps';
+export const MAPS_DIR = '/covid19skeleton/maps';
 
 export const MAP_META = {
   India: {
