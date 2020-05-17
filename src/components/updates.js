@@ -11,7 +11,7 @@ function Updates(props) {
 
   useEffectOnce(() => {
     axios
-      .get('https://api.covid19india.org/updatelog/log.json')
+      // .get('https://api.covid19india.org/updatelog/log.json')
       .then((response) => {
         setUpdates(response.data);
       })

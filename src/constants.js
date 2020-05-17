@@ -5,10 +5,10 @@ export const STATE_ROW_STATISTICS = [
   // 'deaths',
 ];
 export const DISTRICT_ROW_STATISTICS = [
-  'confirmed',
-  'active',
-  'recovered',
-  'deceased',
+  'SC',
+  'ST',
+  'OBC',
+
 ];
 
 export const MAP_TYPES = {

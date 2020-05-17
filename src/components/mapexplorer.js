@@ -105,7 +105,7 @@ function MapExplorer({
         );
       }
     } else {
-      const dataTypes = ['confirmed', 'active', 'recovered', 'deceased'];
+      const dataTypes = ['SC', 'ST', 'OBC'];
       statistic = dataTypes.reduce((acc, dtype) => {
         acc[dtype] = {total: 0, max: 0};
         return acc;
@@ -281,13 +281,13 @@ function MapExplorer({
     [currentMap.stat, districts, setRegionHighlighted]
   );
 
-  const testObj = useMemo(
-    () =>
-      stateTestData.find(
-        (obj) => obj.state === panelRegion.state && obj.totaltested !== ''
-      ),
-    [stateTestData, panelRegion]
-  );
+  // const testObj = useMemo(
+  //   () =>
+  //     stateTestData.find(
+  //       (obj) => obj.state === panelRegion.state && obj.totaltested !== ''
+  //     ),
+  //   [stateTestData, panelRegion]
+  // );
 
   let hoveredRegionCount;
   let hoveredRegionZone;
@@ -347,90 +347,54 @@ function MapExplorer({
       <div className="map-stats">
         <div
           className={`stats fadeInUp ${
-            mapOption === 'confirmed' ? 'focused' : ''
+            mapOption === 'SC' ? 'focused' : ''
           }`}
           style={{animationDelay: '2s'}}
-          onClick={() => setMapOption('confirmed')}
+          onClick={() => setMapOption('SC')}
         >
-          <h5>{window.innerWidth <= 769 ? t('Cnfmd') : t('Confirmed')}</h5>
+          <h5>{window.innerWidth <= 769 ? t('SC') : t('SC')}</h5>
           <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.confirmed)}</h1>
-            <h6>{`+${formatNumber(panelRegion.deltaconfirmed)}`}</h6>
+            <h1>{formatNumber(panelRegion.SC)}</h1>
+            {/* <h6>{`+${formatNumber(panelRegion.deltaconfirmed)}`}</h6> */}
           </div>
         </div>
 
         <div
           className={`stats is-blue fadeInUp ${
-            mapOption === 'active' ? 'focused' : ''
+            mapOption === 'ST' ? 'focused' : ''
           }`}
           style={{animationDelay: '2.1s'}}
-          onClick={() => setMapOption('active')}
+          onClick={() => setMapOption('ST')}
         >
-          <h5>{window.innerWidth <= 769 ? t('Actv') : t('Active')}</h5>
+          <h5>{window.innerWidth <= 769 ? t('ST') : t('ST')}</h5>
           <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.active)}</h1>
+            <h1>{formatNumber(panelRegion.ST)}</h1>
             <h6>{` `}</h6>
           </div>
         </div>
 
         <div
           className={`stats is-green fadeInUp ${
-            mapOption === 'recovered' ? 'focused' : ''
+            mapOption === 'OBC' ? 'focused' : ''
           }`}
           style={{animationDelay: '2.2s'}}
-          onClick={() => setMapOption('recovered')}
+          onClick={() => setMapOption('OBC')}
         >
-          <h5>{window.innerWidth <= 769 ? t('Rcvrd') : t('Recovered')}</h5>
+          <h5>{window.innerWidth <= 769 ? t('OBC') : t('OBC')}</h5>
           <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.recovered)}</h1>
-            <h6>{`+${formatNumber(panelRegion.deltarecovered)}`}</h6>
+            <h1>{formatNumber(panelRegion.OBC)}</h1>
+            {/* <h6>{`+${formatNumber(panelRegion.deltarecovered)}`}</h6> */}
           </div>
         </div>
 
-        <div
-          className={`stats is-gray fadeInUp ${
-            mapOption === 'deceased' ? 'focused' : ''
-          }`}
-          style={{animationDelay: '2.3s'}}
-          onClick={() => setMapOption('deceased')}
-        >
-          <h5>{window.innerWidth <= 769 ? t('Dcsd') : t('Deceased')}</h5>
-          <div className="stats-bottom">
-            <h1>{formatNumber(panelRegion.deaths)}</h1>
-            <h6>{`+${formatNumber(panelRegion.deltadeaths)}`}</h6>
-          </div>
-        </div>
 
-        <div
-          className="stats is-purple tested fadeInUp"
-          style={{animationDelay: '2.4s'}}
-        >
-          <h5>{t('Tested')}</h5>
-          <div className="stats-bottom">
-            <h1>{formatNumber(testObj?.totaltested)}</h1>
-          </div>
-          <h6 className="timestamp">
-            {!isNaN(parse(testObj?.updatedon, 'dd/MM/yyyy', new Date()))
-              ? `${t('As of')} ${format(
-                  parse(testObj?.updatedon, 'dd/MM/yyyy', new Date()),
-                  'dd MMM'
-                )}`
-              : ''}
-          </h6>
-          {testObj?.totaltested?.length > 1 && (
-            <a href={testObj.source} target="_noblank">
-              <Icon.Link />
-            </a>
-          )}
-          {panelRegion.state === 'Total' ? testedToolTip : ''}
-        </div>
       </div>
 
       <div className="meta fadeInUp" style={{animationDelay: '2.4s'}}>
         <h2
           className={`${
             currentMap.stat !== MAP_STATISTICS.ZONE
-              ? mapOption !== 'confirmed'
+              ? mapOption !== 'SC'
                 ? mapOption
                 : ''
               : hoveredRegionZone

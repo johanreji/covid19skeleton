@@ -71,44 +71,44 @@ function Table({
     states.filter((state) => state.statecode !== 'TT')
   );
 
-  const FineprintTop = useMemo(
-    () => (
-      <React.Fragment>
-        <h5
-          className="table-fineprint fadeInUp"
-          style={{animationDelay: '1.5s'}}
-        >
-          {t('Compiled from State Govt. numbers')},{' '}
-          <Link to="/faq" style={{color: '#6c757d'}}>
-            {t('know more')}!
-          </Link>
-        </h5>
-        <h5
-          className="table-fineprint fadeInUp"
-          style={{animationDelay: '1.5s'}}
-        >
-          District zones as published by MoHFW,{' '}
-          <a
-            href="https://www.facebook.com/airnewsalerts/photos/a.262571017217636/1710062729135117/?type=3&theater"
-            style={{color: '#6c757d'}}
-          >
-            source
-          </a>
-        </h5>
-      </React.Fragment>
-    ),
-    [t]
-  );
+  // const FineprintTop = useMemo(
+  //   () => (
+  //     <React.Fragment>
+  //       <h5
+  //         className="table-fineprint fadeInUp"
+  //         style={{animationDelay: '1.5s'}}
+  //       >
+  //         {t('Compiled from State Govt. numbers')},{' '}
+  //         <Link to="/faq" style={{color: '#6c757d'}}>
+  //           {t('know more')}!
+  //         </Link>
+  //       </h5>
+  //       <h5
+  //         className="table-fineprint fadeInUp"
+  //         style={{animationDelay: '1.5s'}}
+  //       >
+  //         District zones as published by MoHFW,{' '}
+  //         <a
+  //           href="https://www.facebook.com/airnewsalerts/photos/a.262571017217636/1710062729135117/?type=3&theater"
+  //           style={{color: '#6c757d'}}
+  //         >
+  //           source
+  //         </a>
+  //       </h5>
+  //     </React.Fragment>
+  //   ),
+  //   [t]
+  // );
 
-  const FineprintBottom = useMemo(
-    () => (
-      <h5 className="table-fineprint fadeInUp" style={{animationDelay: '1s'}}>
-        {states.slice(1).filter((s) => s && s.confirmed > 0).length} States/UTS
-        Affected
-      </h5>
-    ),
-    [states]
-  );
+  // const FineprintBottom = useMemo(
+  //   () => (
+  //     <h5 className="table-fineprint fadeInUp" style={{animationDelay: '1s'}}>
+  //       {states.slice(1).filter((s) => s && s.confirmed > 0).length} States/UTS
+  //       Affected
+  //     </h5>
+  //   ),
+  //   [states]
+  // );
 
   const doSort = useCallback(
     (sortData) => {
@@ -157,7 +157,7 @@ function Table({
           globalEventOff="click"
         />
 
-        {FineprintTop}
+        {/* {FineprintTop} */}
 
         <table className="table fadeInUp" style={{animationDelay: '1.8s'}}>
           <thead>
@@ -226,7 +226,7 @@ function Table({
             </tbody>
           )}
         </table>
-        {states && FineprintBottom}
+        {/* {states && FineprintBottom} */}
       </React.Fragment>
     );
   } else {

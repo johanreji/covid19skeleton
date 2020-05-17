@@ -101,14 +101,14 @@ function ChoroplethMap({
       } else {
         const colorInterpolator = (t) => {
           switch (mapOption) {
-            case 'confirmed':
+            case 'SC':
               return d3.interpolateReds(t * 0.85);
-            case 'active':
+            case 'ST':
               return d3.interpolateBlues(t * 0.85);
-            case 'recovered':
+            case 'OBC':
               return d3.interpolateGreens(t * 0.85);
-            case 'deceased':
-              return d3.interpolateGreys(t * 0.85);
+            // case 'deceased':
+            //   return d3.interpolateGreys(t * 0.85);
             default:
               return;
           }
@@ -259,14 +259,14 @@ function ChoroplethMap({
           } else {
             return isHovered
               ? `${
-                  mapOption === 'confirmed'
+                  mapOption === 'SC'
                     ? '#ff073a'
-                    : mapOption === 'active'
+                    : mapOption === 'ST'
                     ? '#007bff'
-                    : mapOption === 'recovered'
+                    : mapOption === 'OBC'
                     ? '#28a745'
-                    : mapOption === 'deceased'
-                    ? '#6c757d'
+                    // : mapOption === 'deceased'
+                    // ? '#6c757d'
                     : ''
                 }`
               : null;
@@ -330,14 +330,14 @@ function ChoroplethMap({
             return '#00000060';
           } else {
             return `${
-              mapOption === 'confirmed'
+              mapOption === 'SC'
                 ? '#ff073a30'
-                : mapOption === 'active'
+                : mapOption === 'ST'
                 ? '#007bff30'
-                : mapOption === 'recovered'
+                : mapOption === 'OBC'
                 ? '#28a74530'
-                : mapOption === 'deceased'
-                ? '#6c757d30'
+                // : mapOption === 'deceased'
+                // ? '#6c757d30'
                 : ''
             }`;
           }
@@ -428,14 +428,14 @@ function ChoroplethMap({
           nodes[i].parentNode.appendChild(nodes[i]);
           d3.select(nodes[i]).attr('stroke', function (d) {
             if (currentMap.stat === MAP_STATISTICS.ZONE) return '#343a40';
-            return d3.select(this).classed('confirmed')
+            return d3.select(this).classed('SC')
               ? '#ff073a'
-              : d3.select(this).classed('active')
+              : d3.select(this).classed('ST')
               ? '#007bff'
-              : d3.select(this).classed('recovered')
+              : d3.select(this).classed('OBC')
               ? '#28a745'
-              : d3.select(this).classed('deceased')
-              ? '#6c757d'
+              // : d3.select(this).classed('deceased')
+              // ? '#6c757d'
               : null;
           });
           return true;

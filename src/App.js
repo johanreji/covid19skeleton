@@ -1,5 +1,5 @@
 import Home from './components/home';
-import Navbar from './components/navbar';
+
 import ScrollToTop from './utils/ScrollToTop';
 
 import React, {Suspense, lazy} from 'react';
@@ -15,11 +15,7 @@ import {useLocalStorage, useEffectOnce} from 'react-use';
 
 import './App.scss';
 
-const DeepDive = lazy(() => import('./components/deepdive'));
-const FAQ = lazy(() => import('./components/faq'));
-const PatientDB = lazy(() => import('./components/patientdb'));
-const Resources = lazy(() => import('./components/resources'));
-const State = lazy(() => import('./components/state'));
+
 
 const schemaMarkup = {
   '@context': 'http://schema.org/',
@@ -40,41 +36,6 @@ function App() {
       displayName: 'Home',
       animationDelayForNavbar: 0.2,
       showInNavbar: true,
-    },
-    {
-      pageLink: '/covid19skeleton/demographics',
-      view: PatientDB,
-      displayName: t('Demographics'),
-      animationDelayForNavbar: 0.3,
-      showInNavbar: true,
-    },
-    {
-      pageLink: '/covid19skeleton/deepdive',
-      view: DeepDive,
-      displayName: t('Deep Dive'),
-      animationDelayForNavbar: 0.4,
-      showInNavbar: true,
-    },
-    {
-      pageLink: '/covid19skeleton/essentials',
-      view: Resources,
-      displayName: t('Essentials'),
-      animationDelayForNavbar: 0.5,
-      showInNavbar: true,
-    },
-    {
-      pageLink: '/covid19skeleton/about',
-      view: FAQ,
-      displayName: t('About'),
-      animationDelayForNavbar: 0.6,
-      showInNavbar: true,
-    },
-    {
-      pageLink: '/covid19skeleton/state/:stateCode',
-      view: State,
-      displayName: t('State'),
-      animationDelayForNavbar: 0.7,
-      showInNavbar: false,
     },
   ];
 
@@ -119,11 +80,6 @@ function App() {
           <Route
             render={({location}) => (
               <div className="Almighty-Router">
-                <Navbar
-                  pages={pages}
-                  darkMode={darkMode}
-                  setDarkMode={setDarkMode}
-                />
                 <Switch location={location}>
                   {pages.map((page, index) => {
                     return (
